@@ -34,6 +34,7 @@ namespace Roguelands.MoreCombatChips.CombatChips
 
     private Vector3 ComputeDirection(Vector3 initialPosition)
     {
+      // Z coordinate is also being updated.
       return (GadgetCoreAPI.GetCursorPos() - initialPosition).normalized;
     }
   }

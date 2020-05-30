@@ -26,16 +26,27 @@ namespace Roguelands.MoreCombatChips.Projectiles
       {
         switch (child.name)
         {
+          case "Plane":
           case "Plane_001":
-          case "eye":
             Object.Destroy(child.gameObject);
             break;
 
-          case "Plane":
-            child.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("SmallSample"));
+          case "eye":
+            CreateClone(child.gameObject);
+            child.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("MessyOneBrown"));
+            child.sortingOrder = 1;
             break;
         }
       }
+    }
+
+    private void CreateClone(GameObject gameObjectToClone)
+    {
+      GameObject clone = Object.Instantiate(gameObjectToClone, gameObjectToClone.transform.position,
+                                            gameObjectToClone.transform.rotation, gameObjectToClone.transform.parent);
+      MeshRenderer cloneMesh = clone.GetComponent<MeshRenderer>();
+      cloneMesh.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("MessyOneGray"));
+      cloneMesh.sortingOrder = 0;
     }
   }
 }

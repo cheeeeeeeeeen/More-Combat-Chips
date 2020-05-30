@@ -125,6 +125,12 @@
     <None Update="Assets\MessyMkIChip.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\MessyOneBrown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\MessyOneGray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\Sample.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

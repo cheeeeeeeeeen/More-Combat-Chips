@@ -20,7 +20,6 @@ namespace Roguelands.MoreCombatChips.Scripts
     [RPC]
     public virtual void Set(int damage, Vector3 direction)
     {
-      MoreCombatChips.Log($"Set: {direction}");
       GetComponent<NetworkView>().RPC("SetSound", RPCMode.All);
       GetComponent<NetworkView>().RPC("SyncFields", RPCMode.AllBuffered, damage, direction);
     }
@@ -41,6 +40,8 @@ namespace Roguelands.MoreCombatChips.Scripts
         StartCoroutine(Shoot());
       }
       speed = Mathf.Lerp(minSpeed, speed, 0.9f);
+
+      Animate();
     }
 
     private IEnumerator Shoot()
@@ -80,6 +81,23 @@ namespace Roguelands.MoreCombatChips.Scripts
       if (attackAngle >= 360f)
       {
         attackAngle -= 360f;
+      }
+    }
+
+    private void Animate()
+    {
+      foreach (MeshRenderer child in gameObject.transform.GetComponentsInChildren<MeshRenderer>())
+      {
+        switch (child.name)
+        {
+          case "eye":
+            child.transform.rotation *= Quaternion.AngleAxis(5f, Vector3.forward);
+            break;
+
+          case "eye(Clone)":
+            child.transform.rotation *= Quaternion.AngleAxis(-20f, Vector3.forward);
+            break;
+        }
       }
     }
   }
