@@ -13,9 +13,9 @@ namespace Roguelands.MoreCombatChips.CombatChips
 
     public override string Name => "Messy Mk. I";
 
-    public override string Description => "Throw Messy so it wreaks havoc to enemies near it.";
+    public override string Description => "Throw Messy so it wreaks havoc to enemies near it. It needs energy to power it up.";
 
-    public override int Cost => 1;
+    public override int Cost => 30;
 
     public override ChipInfo.ChipCostType CostType => ChipInfo.ChipCostType.ENERGY;
 

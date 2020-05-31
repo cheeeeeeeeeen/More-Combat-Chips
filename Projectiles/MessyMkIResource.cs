@@ -33,7 +33,7 @@ namespace Roguelands.MoreCombatChips.Projectiles
 
           case "eye":
             CreateClone(child.gameObject);
-            child.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("MessyOneBrown"));
+            child.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("MessyOneGray"));
             child.sortingOrder = 1;
             break;
         }
@@ -45,7 +45,7 @@ namespace Roguelands.MoreCombatChips.Projectiles
       GameObject clone = Object.Instantiate(gameObjectToClone, gameObjectToClone.transform.position,
                                             gameObjectToClone.transform.rotation, gameObjectToClone.transform.parent);
       MeshRenderer cloneMesh = clone.GetComponent<MeshRenderer>();
-      cloneMesh.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("MessyOneGray"));
+      cloneMesh.material.SetTexture("_MainTex", GadgetCoreAPI.LoadTexture2D("MessyOneBrown"));
       cloneMesh.sortingOrder = 0;
     }
   }

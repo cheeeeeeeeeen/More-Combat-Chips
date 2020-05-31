@@ -11,8 +11,6 @@ namespace Roguelands.MoreCombatChips.Scripts
     private readonly float attackRate = 0.3f;
     private readonly float speed = 1.2f;
 
-    // Any method that contains RPC calls should always remain on the owner class, and not the inheriting class.
-    [RPC]
     public void Set(int damage, int xDirection)
     {
       // This only runs to the one who used the Chip to spawn the turret, so sync the sound effect and variables.
@@ -28,6 +26,10 @@ namespace Roguelands.MoreCombatChips.Scripts
       this.xDirection = xDirection;
       Vector3 oldScale = gameObject.transform.localScale;
       gameObject.transform.localScale = new Vector3(oldScale.x * xDirection, oldScale.y, oldScale.z);
+    }
+
+    private void Awake()
+    {
     }
 
     private void Update()
@@ -62,6 +64,12 @@ namespace Roguelands.MoreCombatChips.Scripts
     private void SetShoot()
     {
       StartCoroutine(Shoot());
+    }
+
+    [RPC]
+    private void SetSound()
+    {
+      GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/turret1"), volume);
     }
   }
 }

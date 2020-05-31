@@ -16,6 +16,8 @@ namespace Roguelands.MoreCombatChips.Scripts
     private readonly float attackAngleIncrement = 15f;
     private readonly float minSpeed = 0.4f;
     private readonly float speedToStartShooting = 1.2f;
+    private readonly float rotateSpeedTop = 5f;
+    private readonly float rotateSpeedBottom = -20f;
 
     [RPC]
     public virtual void Set(int damage, Vector3 direction)
@@ -91,14 +93,20 @@ namespace Roguelands.MoreCombatChips.Scripts
         switch (child.name)
         {
           case "eye":
-            child.transform.rotation *= Quaternion.AngleAxis(5f, Vector3.forward);
+            child.transform.rotation *= Quaternion.AngleAxis(rotateSpeedTop, Vector3.forward);
             break;
 
           case "eye(Clone)":
-            child.transform.rotation *= Quaternion.AngleAxis(-20f, Vector3.forward);
+            child.transform.rotation *= Quaternion.AngleAxis(rotateSpeedBottom, Vector3.forward);
             break;
         }
       }
+    }
+
+    [RPC]
+    private void SetSound()
+    {
+      GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/turret1"), volume);
     }
   }
 }
